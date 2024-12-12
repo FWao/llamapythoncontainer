@@ -1,0 +1,17 @@
+services:
+  llama_cpp:
+    build:
+      context: .  # Directory containing the Dockerfile
+    image: ghcr.io/fwao/llamapythoncontainer:latest
+    container_name: llamapythoncontainer
+    volumes:
+      - ./data:/workspace/data  # Map host's ./data directory to /workspace/data in the container, just put all all the data there
+    working_dir: /workspace
+    command: python /workspace/data/main.py --input /workspace/data/input.tsv --output /workspace/data/output.jsonl --model /workspace/data/Llama-3.2-3B-Instruct-Q8_0.gguf
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]

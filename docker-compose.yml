@@ -5,9 +5,10 @@ services:
     image: ghcr.io/fwao/llamapythoncontainer:latest
     container_name: llamapythoncontainer
     volumes:
-      - ./data:/workspace/data  # Map host's ./data directory to /workspace/data in the container, just put all all the data there
+      - ./models:/workspace/models  # Map host's ./models directory to /workspace/models in the container
+      - ./data:/workspace/data  # Put main.py and additional data (e.g. input and output files) here and tell the python script where to find them
     working_dir: /workspace
-    command: python /workspace/data/main.py --input /workspace/data/input.tsv --output /workspace/data/output.jsonl --model /workspace/data/Llama-3.2-3B-Instruct-Q8_0.gguf
+    command: python /workspace/data/main.py --model /workspace/models/Llama-3.2-3B-Instruct-Q8_0.gguf
     deploy:
       resources:
         reservations:

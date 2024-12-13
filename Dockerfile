@@ -1,6 +1,5 @@
 # Use NVIDIA CUDA development base image
-FROM nvidia/cuda:12.6.3-devel-ubuntu24.04
-
+FROM nvidia/cuda:12.2.2-devel-ubuntu22.04
 
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y git build-essential \

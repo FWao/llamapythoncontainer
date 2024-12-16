@@ -14,7 +14,7 @@ RUN python3 -m pip install --upgrade --break-system-packages pytest cmake scikit
 COPY requirements.txt .
 
 RUN python3 -m pip install --break-system-packages -r requirements.txt
-RUN python3- m pip install --break-system-packages torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+RUN python3 -m pip install --break-system-packages torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 # Install Python dependencies
 RUN CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=86" pip install --break-system-packages llama-cpp-python

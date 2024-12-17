@@ -1,5 +1,5 @@
 # Use NVIDIA CUDA development base image
-FROM nvidia/cuda:12.2.2-devel-ubuntu22.04
+FROM nvidia/cuda:12.6.3-devel-ubuntu24.04
 
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y git build-essential \
@@ -17,7 +17,7 @@ RUN python3 -m pip install --break-system-packages -r requirements.txt
 RUN python3 -m pip install --break-system-packages torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 # Install Python dependencies
-RUN CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=86" pip install --break-system-packages llama-cpp-python
+RUN CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=80" pip install --break-system-packages llama-cpp-python
 
 # Create a directory for the script and copy it into the container
 WORKDIR /workspace

@@ -8,7 +8,7 @@ RUN apt-get update && apt-get upgrade -y \
     libclblast-dev libopenblas-dev \
     && mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
-RUN python3 -m pip install --upgrade pip
+# RUN python3 -m pip install --upgrade --break-system-packages pip
 RUN python3 -m pip install --upgrade --break-system-packages pytest cmake scikit-build setuptools fastapi uvicorn sse-starlette pydantic-settings starlette-context tqdm
 
 COPY requirements.txt .
